@@ -36,7 +36,7 @@ class Grid:
 
     def check_rows(self):
         for row in range(1, 8, 3):
-            if (self.cell[row] == self.cell[row + 1] == self.cell[row + 2]) and self.cell[row] != "_":
+            if self.cell[row] == self.cell[row + 1] == self.cell[row + 2] and self.cell[row] != "_":
                 if self.cell[row] == "X":
                     self.status = 1
                 else:
@@ -44,23 +44,19 @@ class Grid:
 
     def check_columns(self):
         for col in range(1, 4):
-            if (self.cell[col] == self.cell[col + 3] == self.cell[col + 6]) and self.cell[col] != "_":
+            if self.cell[col] == self.cell[col + 3] == self.cell[col + 6] and self.cell[col] != "_":
                 if self.cell[col] == "X":
                     self.status = 1
                 else:
                     self.status = 2
     
     def check_diagonals(self):
-        if (self.cell[1] == self.cell[5] == self.cell[9]) and self.cell[1] != "_":
-            if self.cell[1] == "X":
-                self.status = 1
-            else:
-                self.status = 2
-        if (self.cell[3] == self.cell[5] == self.cell[7]) and self.cell[3] != "_":
-            if self.cell[3] == "X":
-                self.status = 1
-            else:
-                self.status = 2
+        for diff in range(2, 5, 2):
+            if self.cell[5 - diff] == self.cell[5] == self.cell[5 + diff] and self.cell[5] != "_":
+                if self.cell[5] == "X":
+                    self.status = 1
+                else:
+                    self.status = 2
 
     def print_grid(self):
         print(self)
