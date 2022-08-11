@@ -13,9 +13,9 @@ class TicTacToe:
     def get_players(self):
         print("Player X, please enter your name.")
         player_X_name = input("Your name: ")
-        self.player["X"] = Player(player_X_name)
         print("Player O, please enter your name.")
         player_O_name = input("Your name: ")
+        self.player["X"] = Player(player_X_name)
         self.player["O"] = Player(player_O_name)
 
     def get_cell_number(self, player):
@@ -35,7 +35,9 @@ class TicTacToe:
             return cell_number
     
     def say_draw(self):
-        print(f"{self.player[1]} and {self.player[2]} drew!")
+        player_X_name = self.player["X"]
+        player_O_name = self.player["O"]
+        print(f"{player_X_name} and {player_O_name} drew!")
 
     def congratulate_winner(self):
         winner_mark = self.grid.status

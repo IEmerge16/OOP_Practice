@@ -29,7 +29,7 @@ class Grid:
         self.cell[cell_number] = mark
     
     def check_if_full(self):
-        self.is_full = "_" in self.cell
+        self.is_full = "_" not in self.cell.values()
 
     def check_rows(self):
         for row in (1, 4, 7):
