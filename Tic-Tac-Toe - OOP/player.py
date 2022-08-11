@@ -7,7 +7,6 @@ class Player:
             self.mark = "X"
         else:
             self.mark = "O"
-        if Player.number_of_players >= 2:
             Player.number_of_players = 0
 
     def __repr__(self):

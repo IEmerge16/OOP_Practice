@@ -78,7 +78,7 @@ class TicTacToe:
     def play_again(self):
         while True:
             play_again = input("Play again? (y/n): ").lower()
-            if play_again not in ["y", "n"]:
+            if play_again not in ("y", "n"):
                 print("Please enter a y or n.")
                 continue
             if play_again == "y":
@@ -100,7 +100,7 @@ class TicTacToe:
     def exit(self):
         while True:
             exit = input("Go back to main menu? (y/n): ").lower()
-            if exit not in ["y", "n"]:
+            if exit not in ("y", "n"):
                 print("Please enter a y or n.")
                 continue
             if exit == "n":
