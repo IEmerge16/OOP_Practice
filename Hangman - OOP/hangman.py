@@ -66,28 +66,20 @@ class Hangman:
                 self.current_word[idx] = self.guess_letter
 
     def print_current_word(self):
-        word_to_print = ""
-        for idx in range(len(self.current_word)):
-            word_to_print += self.current_word[idx]
+        word_to_print = "".join(self.current_word)
         print(f"Current word: {word_to_print}")
 
     def update_number_of_lives(self):
-        is_in_word = False
-        for idx in range(len(self.guess_word)):
-            if self.guess_word[idx] == self.guess_letter:
-                is_in_word = True
-        if not is_in_word:
-            print("Oh no! The letter is not in the word.")
-            self.lives -= 1
+        if self.guess_letter in self.guess_word:
+            return
+        print("Oh no! The letter is not in the word.")
+        self.lives -= 1
 
     def print_number_of_lives(self):
         print(f"Current lives: {self.lives}")
 
     def compare_word_to_guess_word(self):
-        self.word_is_correct = True
-        for idx in range(len(self.guess_word)):
-            if self.guess_word[idx] != self.current_word[idx]:
-                self.word_is_correct = False
+        self.word_is_correct = self.guess_word == self.current_word
         
     def check_game_status(self):
         if self.word_is_correct:
