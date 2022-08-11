@@ -11,12 +11,12 @@ class TicTacToe:
         self.player = {}
     
     def get_players(self):
-        print("Player 1, please enter your name.")
-        player_1_name = input("Your name: ")
-        self.player[1] = Player(player_1_name)
-        print("Player 2, please enter your name.")
-        player_2_name = input("Your name: ")
-        self.player[2] = Player(player_2_name)
+        print("Player X, please enter your name.")
+        player_X_name = input("Your name: ")
+        self.player["X"] = Player(player_X_name)
+        print("Player O, please enter your name.")
+        player_O_name = input("Your name: ")
+        self.player["O"] = Player(player_O_name)
 
     def get_cell_number(self, player):
         while True:
@@ -38,9 +38,9 @@ class TicTacToe:
         print(f"{self.player[1]} and {self.player[2]} drew!")
 
     def congratulate_winner(self):
-        winner_idx = self.grid.status
-        loser_idx = TicTacToe.switch_player(winner_idx)
-        print(f"{self.player[winner_idx]} won against {self.player[loser_idx]}.")
+        winner_mark = self.grid.status
+        loser_mark = TicTacToe.switch_player(winner_mark)
+        print(f"{self.player[winner_mark]} won against {self.player[loser_mark]}.")
 
     def check_status(self):
         self.grid.check_columns()
@@ -56,21 +56,22 @@ class TicTacToe:
             self.say_draw()     
 
     @staticmethod
-    def switch_player(cur_player_idx):
-        new_player_idx = 3 - cur_player_idx
-        return new_player_idx
+    def switch_player(current_mark):
+        if current_mark == "X":
+            return "O"
+        return "X"
 
     def play_match(self):
         self.grid.reset_grid()
         self.play = True
         self.grid.print_guide()
-        cur_player_idx = 1
+        current_mark = "X"
         while self.play:
-            cell_number = self.get_cell_number(self.player[cur_player_idx])
-            self.grid.update_cell(cell_number, self.player[cur_player_idx].mark)
+            cell_number = self.get_cell_number(self.player[current_mark])
+            self.grid.update_cell(cell_number, current_mark)
             self.grid.print_grid()
             self.check_status()
-            cur_player_idx = TicTacToe.switch_player(cur_player_idx)
+            current_mark = TicTacToe.switch_player(current_mark)
 
     def play_again(self):
         while True:
