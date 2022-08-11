@@ -61,8 +61,8 @@ class Hangman:
         self.used_letters[self.guess_letter] = True
 
     def update_current_word(self):
-        for idx in range(len(self.guess_word)):
-            if self.guess_word[idx] == self.guess_letter:
+        for idx, letter in enumerate(self.guess_word):
+            if letter == self.guess_letter:
                 self.current_word[idx] = self.guess_letter
 
     def print_current_word(self):
