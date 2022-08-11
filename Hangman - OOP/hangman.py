@@ -79,7 +79,7 @@ class Hangman:
         print(f"Current lives: {self.lives}")
 
     def compare_word_to_guess_word(self):
-        self.word_is_correct = self.guess_word == self.current_word
+        self.word_is_correct = self.guess_word == "".join(self.current_word)
         
     def check_game_status(self):
         if self.word_is_correct:
