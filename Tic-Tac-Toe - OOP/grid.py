@@ -1,8 +1,6 @@
 class Grid:
     def __init__(self):
-        self.cell = {}
-        for cell_number in range(1, 10):
-            self.cell[cell_number] = "_"
+        self.cell = {cell_number : "_" for cell_number in range(1, 10)}
         self.status = None
         self.is_full = False
 
