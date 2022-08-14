@@ -1,5 +1,6 @@
 ALPHABET = list("abcdefghijklmnopqrstuvwxyz")
 
+
 class Hangman:
     @staticmethod
     def welcome_players():
@@ -10,7 +11,7 @@ class Hangman:
         self.run = True
         self.play = False
         self.used_letters = {letter: False for letter in ALPHABET}
-    
+
     def get_guesser(self):
         print("Enter the name of the guesser.")
         self.guesser = input("Guesser's name: ")
@@ -29,13 +30,15 @@ class Hangman:
                     is_valid_word = False
                     break
             if is_valid_word:
-                self.current_word = ["_" if letter != " " else " " for letter in self.guess_word]
+                self.current_word = ["_" if letter !=
+                                     " " else " " for letter in self.guess_word]
                 break
             print("The word is not valid. Please enter only english alphabet letters.")
-    
+
     def set_number_of_lives(self):
         while True:
-            print(f"{self.host}, how many times (from 1 to 26) do you want {self.guesser} to guess your word?")
+            print(
+                f"{self.host}, how many times (from 1 to 26) do you want {self.guesser} to guess your word?")
             try:
                 self.lives = int(input("Lives: "))
             except ValueError:
@@ -80,7 +83,7 @@ class Hangman:
 
     def compare_word_to_guess_word(self):
         self.word_is_correct = self.guess_word == "".join(self.current_word)
-        
+
     def check_game_status(self):
         if self.word_is_correct:
             print(f"{self.guesser} guessed {self.host}'s word!")
@@ -128,11 +131,13 @@ class Hangman:
                 self.run = False
             return
 
+
 def main():
     hangman = Hangman()
     while hangman.run:
         hangman.gameplay()
         hangman.play_again()
+
 
 if __name__ == "__main__":
     main()
