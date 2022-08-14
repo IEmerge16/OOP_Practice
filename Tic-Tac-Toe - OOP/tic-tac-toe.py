@@ -104,8 +104,12 @@ class TicTacToe:
             else:
                 self.run_game = True
             return   
-if __name__ == "__main__":
+
+def main():
     tictactoe = TicTacToe()
     while tictactoe.run_game:
         tictactoe.gameplay()
         tictactoe.exit()
+
+if __name__ == "__main__":
+    main()
