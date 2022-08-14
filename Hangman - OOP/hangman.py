@@ -9,7 +9,7 @@ class Hangman:
         self.welcome_players()
         self.run = True
         self.play = False
-        self.used_letters = {letter : False for letter in ALPHABET}
+        self.used_letters = {letter: False for letter in ALPHABET}
     
     def get_guesser(self):
         print("Enter the name of the guesser.")
@@ -108,7 +108,7 @@ class Hangman:
             self.check_game_status()
 
     def reset_used_letters(self):
-        self.used_letters = {letter : False for letter in ALPHABET}
+        self.used_letters = {letter: False for letter in ALPHABET}
 
     @staticmethod
     def thank_players():
@@ -128,8 +128,11 @@ class Hangman:
                 self.run = False
             return
 
-if __name__ == "__main__":
+def main():
     hangman = Hangman()
     while hangman.run:
         hangman.gameplay()
         hangman.play_again()
+
+if __name__ == "__main__":
+    main()
