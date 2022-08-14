@@ -19,9 +19,10 @@ class Grid:
         """)
 
     def reset_grid(self):
-        self.status = None
         for cell_number in range(1, 10):
             self.cell[cell_number] = "_"
+        self.status = None
+        self.is_full = False
 
     def update_cell(self, cell_number, mark):
         self.cell[cell_number] = mark

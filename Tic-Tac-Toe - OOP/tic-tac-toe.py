@@ -1,4 +1,3 @@
-from player import Player
 from grid import Grid
 
 class TicTacToe:
@@ -12,11 +11,9 @@ class TicTacToe:
     
     def get_players(self):
         print("Player X, please enter your name.")
-        player_X_name = input("Your name: ")
+        self.player["X"] = input("Your name: ")
         print("Player O, please enter your name.")
-        player_O_name = input("Your name: ")
-        self.player["X"] = Player(player_X_name)
-        self.player["O"] = Player(player_O_name)
+        self.player["O"] = input("Your name: ")
 
     def get_cell_number(self, player):
         while True:
@@ -35,9 +32,7 @@ class TicTacToe:
             return cell_number
     
     def say_draw(self):
-        player_X_name = self.player["X"]
-        player_O_name = self.player["O"]
-        print(f"{player_X_name} and {player_O_name} drew!")
+        print(f"{self.player['X']} and {self.player['O']} drew!")
 
     def congratulate_winner(self):
         winner_mark = self.grid.status
@@ -83,8 +78,8 @@ class TicTacToe:
                 continue
             if play_again == "y":
                 self.match_up = True
-                return
-            self.match_up = False
+            else:
+                self.match_up = False
             return
 
     def gameplay(self):
@@ -106,10 +101,9 @@ class TicTacToe:
             if exit == "n":
                 self.thank_players()
                 self.run_game = False
-                return
-            self.run_game = True
-            return
-        
+            else:
+                self.run_game = True
+            return   
 if __name__ == "__main__":
     tictactoe = TicTacToe()
     while tictactoe.run_game:
