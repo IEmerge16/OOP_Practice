@@ -55,7 +55,7 @@ class TicTacToe:
         self.grid.check_if_full()
         if self.grid.is_full:
             self.play = False
-            self.say_draw()     
+            self.say_draw()
 
     @staticmethod
     def switch_player(current_mark):
